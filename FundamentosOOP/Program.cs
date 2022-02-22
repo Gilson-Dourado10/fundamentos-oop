@@ -1,32 +1,45 @@
 ﻿using System;
+using System.Globalization;
 
 
 namespace FundamentosOOP
 {
-    
+
     class Program
     {
         static void Main(string[] args)
         {
-            Person person1 = new Person("Leopold", 6);
-            Console.WriteLine("person1 Name = {0} Age = {1}", person1.Name, person1.Age);
+            Triangulo x, y;
+            x = new Triangulo();  
+            y = new Triangulo();  
 
-            // Declare new person, assign person1 to it.
-            Person person2 = person1;
+            Console.WriteLine("Entre com as medidas do triângulo X ");
+            x.a = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            x.b= double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            x.c = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
-            // Change the name of person2, and person1 also changes.
-            person2.Name = "Molly";
-            person2.Age = 16;
+            Console.WriteLine(" entre com as medidas do triangulo Y ");
 
-            Console.WriteLine("person2 Name = {0} Age = {1}", person2.Name, person2.Age);
-            Console.WriteLine("person1 Name = {0} Age = {1}", person1.Name, person1.Age);
+            y.a = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            y.b= double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            y.c = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+            double p = (x.a + x.b + x.c) / 2.0;
+            double areaX = Math.Sqrt(p * (p - x.a) * (p - x.b) * (p - x.c));
+            
+            p = (y.a + y.b + y.c) / 2.0;
+            double areaY = Math.Sqrt(p * (p - y.a) * (p - y.b) * (p - y.c));
+            Console.WriteLine("Área de  X = " + areaX.ToString("f4", CultureInfo.CurrentCulture));
+            Console.WriteLine("Área de  Y = " + areaY.ToString("f4", CultureInfo.CurrentCulture));
+
+            if (areaX > areaY)
+            {
+                Console.WriteLine(" MAIOR ÁREA DE X");
+            }
+            else
+            {
+                Console.WriteLine("MAIOR ÁREA DE Y ");
+            }
         }
     }
-/*
-    Output:
-    person1 Name = Leopold Age = 6
-    person2 Name = Molly Age = 16
-    person1 Name = Molly Age = 16
-*/  
-        }
-
+}
